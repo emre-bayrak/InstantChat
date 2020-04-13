@@ -10,5 +10,8 @@
     "chat",
     "nodejs"
   ],
-  "homepage": "https://github.com/emre-bayrak/InstantChat"
+  "homepage": "https://github.com/emre-bayrak/InstantChat",
+  "dependencies": {
+    "angular": "^1.7.9"
+  }
 }
