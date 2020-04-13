@@ -6,7 +6,7 @@ append stylesheets
 
 block content
   div(ng-controller='chatController')
-    | chat
+    h1 #{ user.firstName } #{ user.lastName }
 
 append javascripts
     script(src="/javascripts/controller/chatController.js")
