@@ -7,8 +7,8 @@ const userSchema = new Schema({
         type: String,
         unique: true
     },
-    name: String,
-    surname: String,
+    firstName: String,
+    lastName: String,
     profilePhotoUrl: String 
 });
 
