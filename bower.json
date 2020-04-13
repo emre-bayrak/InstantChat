@@ -1,0 +1,14 @@
+{
+  "name": "instantchat",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Emre <bayrakemre89@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "chat",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/emre-bayrak/InstantChat"
+}
