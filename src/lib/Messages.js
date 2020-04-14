@@ -9,7 +9,7 @@ module.exports = new Messages();
 
 Messages.prototype.upsert = function ({ roomId, message, firstName, lastName}) {
     this.client.hset(
-        'messages' + roomId,
+        'messages:' + roomId,
         shortid.generate(),
         JSON.stringify({
             firstName,
@@ -23,4 +23,21 @@ Messages.prototype.upsert = function ({ roomId, message, firstName, lastName}) {
             }
         }
     )
+};
+
+Messages.prototype.list = function (roomId, callback) {
+    let messageList = [];
+
+    this.client.hgetall('messages:'+ roomId, function (err, messages) {
+        if (err) {
+            console.log(err);
+            return callback([]);
+        }
+
+        for (let message in messages){
+            messageList.push(JSON.parse(messages[message]));
+        }
+
+        return callback(messageList);
+    })
 };
