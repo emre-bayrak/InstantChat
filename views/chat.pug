@@ -12,13 +12,16 @@ block content
           .top
             ul.tab
               li.conversations(ng-click="changeTab(1)")
-                a(ng-class="{active: activeTab === 1}") Chats
+                a(ng-class="{active: activeTab === 1}") Rooms
               li.onlineUsers(ng-click="changeTab(2)")
                 a(ng-class="{active: activeTab === 2}") Online Users
           .tabArea
             .tab-left(ng-show="activeTab === 1")
               ul.people
-                li.person(ng-repeat="room in roomList")
+                li.person(
+                    ng-repeat="room in roomList",
+                    ng-click="switchRoom(room)"
+                  )
                   span.name {{ room.roomName }}
             .tab-right(ng-show="activeTab === 2")
               ul.people
@@ -28,10 +31,10 @@ block content
                   span.preview &nsbp;
           .bottom
                 button(ng-click="newRoom()") New Room
-        .right
+        .right(ng-show="roomClicked")
               .top
                 span
-                  span.name Dog Woofson
+                  span.name {{ roomName }}
               .chat.active-chat
                 .bubble.you
                   span Hakan Aydın
