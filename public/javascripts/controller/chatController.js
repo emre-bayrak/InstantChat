@@ -1,4 +1,4 @@
-app.controller('chatController', ['$scope', 'chatFactory', ($scope, chatFactory) => {
+app.controller('chatController', ['$scope', 'chatFactory', 'env', ($scope, chatFactory, env) => {
     /**
      * Angular variables
      */
@@ -13,7 +13,7 @@ app.controller('chatController', ['$scope', 'chatFactory', ($scope, chatFactory)
     /**
      * Socket.io event handling.
      */
-    const socket = io.connect("http://67659045.ngrok.io/");
+    const socket = io.connect(env.SERVICE_URL);
     socket.on('onlineList', users => {
         $scope.onlineUsers = users;
         $scope.$apply();

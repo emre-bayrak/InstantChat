@@ -1,7 +1,7 @@
-app.factory('chatFactory', ['$http', ($http) => {
+app.factory('chatFactory', ['$http', 'env', ($http, env) => {
     const getMessages = roomId => {
         return $http({
-            url: 'http://67659045.ngrok.io/messages/list',
+            url: env.SERVICE_URL + 'messages/list',
             method: 'GET',
             params: {
                 roomId
