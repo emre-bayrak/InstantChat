@@ -17,8 +17,8 @@ io.use(socketAuthorization);
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
 io.adapter(redisAdapter({ 
-    host: process.env.REDIS_URI, 
-    port: process.env.REDIS_PORT 
+    host: 'localhost', 
+    port: 6379 
 }));
 
 io.on('connection', socket => {
