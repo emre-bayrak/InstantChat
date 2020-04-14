@@ -24,7 +24,7 @@ io.on('connection', socket => {
     console.log('A user logged in with name ' + socket.request.user.firstName);
 
     Rooms.list(rooms => {
-        console.log(rooms);
+        io.emit('roomList', rooms);
     });
 
     Users.upsert(socket.id, socket.request.user);
@@ -35,6 +35,9 @@ io.on('connection', socket => {
 
     socket.on('newRoom', roomName => {
         Rooms.upsert(roomName);
+        Rooms.list(rooms => {
+            io.emit('roomList', rooms);
+        });
     });
 
     socket.on('disconnect', () => {
