@@ -23,7 +23,7 @@ app.controller('chatController', ['$scope', ($scope) => {
     });
 
     $scope.switchRoom = room => {
-        $scope.roomName = room.roomName;
+        $scope.roomName = room.name;
         $scope.roomClicked = true;
     };
 
