@@ -18,8 +18,6 @@ io.adapter(redisAdapter({
 
 io.on('connection', socket => {
     console.log('A user logged in with name ' + socket.request.user.firstName);
-
-    socket.broadcast.emit('hello');
 });
 
 module.exports = socketApi;
