@@ -1,4 +1,4 @@
 app.controller('chatController', ['$scope', ($scope) => {
     
-    const socket = io.connect("http://9fbd1473.ngrok.io");
+    const socket = io.connect("http://67659045.ngrok.io/");
 }]);
