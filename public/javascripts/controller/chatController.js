@@ -40,11 +40,22 @@ app.controller('chatController', ['$scope', 'userFactory', 'chatFactory', 'env',
     });
 
     $scope.newMessage = () => {
-        socket.emit('newMessage', {
-            message : $scope.message,
-            roomId : $scope.roomId
-        })
-        $scope.message = "";
+        if ($scope.message.trim() !== '') {
+            socket.emit('newMessage', {
+                message : $scope.message,
+                roomId : $scope.roomId
+            })
+
+            $scope.messages[$scope.roomId].push({
+                userId: $scope.user._id,
+                firstName: $scope.user.firstName,
+                lastName: $scope.user.lastName,
+                message : $scope.message,
+                roomId : $scope.roomId
+            });
+
+            $scope.message = "";
+        }
     };
 
     $scope.switchRoom = room => {
