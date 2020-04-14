@@ -1,7 +1,7 @@
 const redis = require('redis');
 
 const getClient = () => redis.createClient({
-        host: 'localhost',
+        host: 'https://ebayrak-instantchat.herokuapp.com',
         port: 6379
 });
 

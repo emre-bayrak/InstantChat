@@ -17,7 +17,7 @@ io.use(socketAuthorization);
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
 io.adapter(redisAdapter({ 
-    host: 'localhost', 
+    host: 'https://ebayrak-instantchat.herokuapp.com', 
     port: 6379 
 }));
 
