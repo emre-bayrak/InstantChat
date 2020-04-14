@@ -1,15 +1,15 @@
 const socketio = require('socket.io');
-
+const socketAuthorization = require('../middleware/socketAuthorization');
 const io = socketio();
 
 const socketApi = { 
     io 
 };
 
-/**
- * Redis adapter
- */
+// Socket Authorization
+io.use(socketAuthorization);
 
+// Redis Adapter
 const redisAdapter = require('socket.io-redis');
 io.adapter(redisAdapter({ 
     host: process.env.REDIS_URI, 
@@ -17,7 +17,7 @@ io.adapter(redisAdapter({
 }));
 
 io.on('connection', socket => {
-    console.log('A user logged in!');
+    console.log('A user logged in with name ' + socket.request.user.firstName);
 
     socket.broadcast.emit('hello');
 });
