@@ -35,13 +35,14 @@ io.on('connection', socket => {
     });
 
     socket.on('newMessage', data => {
-        console.log(data);
-        Messages.upsert({
+        const messageData = {
             ...data,
             userId: socket.request.user._id,
             firstName: socket.request.user.firstName,
             lastName: socket.request.user.lastName
-        });
+        };
+        Messages.upsert(messageData);
+        socket.broadcast.emit('receiveMessage', messageData);
     });
 
     socket.on('newRoom', roomName => {
