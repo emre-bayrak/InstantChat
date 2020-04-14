@@ -1,4 +1,15 @@
-app.controller('chatController', ['$scope', 'chatFactory', 'env', ($scope, chatFactory, env) => {
+app.controller('chatController', ['$scope', 'userFactory', 'chatFactory', 'env', ($scope, userFactory, chatFactory, env) => {
+    /**
+     * Initilization
+     */
+    
+     function init(){
+         userFactory.getUser().then( user => {
+             $scope.user = user;
+         });
+     }
+
+     init();
     /**
      * Angular variables
      */
@@ -10,6 +21,8 @@ app.controller('chatController', ['$scope', 'chatFactory', 'env', ($scope, chatF
     $scope.roomId = "";
     $scope.message = "";
     $scope.messages = [];
+
+    $scope.user = {};
 
     /**
      * Socket.io event handling.
@@ -31,6 +44,8 @@ app.controller('chatController', ['$scope', 'chatFactory', 'env', ($scope, chatF
             roomId : $scope.roomId
         })
         $scope.message = "";
+
+        console.log($scope.user);
     };
 
     $scope.switchRoom = room => {
