@@ -8,11 +8,12 @@ function Messages() {
 
 module.exports = new Messages();
 
-Messages.prototype.upsert = function ({ roomId, message, firstName, lastName}) {
+Messages.prototype.upsert = function ({ roomId, message, userId, firstName, lastName}) {
     this.client.hset(
         'messages:' + roomId,
         shortid.generate(),
         JSON.stringify({
+            userId,
             firstName,
             lastName,
             message,

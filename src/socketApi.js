@@ -38,6 +38,7 @@ io.on('connection', socket => {
         console.log(data);
         Messages.upsert({
             ...data,
+            userId: socket.request.user._id,
             firstName: socket.request.user.firstName,
             lastName: socket.request.user.lastName
         });

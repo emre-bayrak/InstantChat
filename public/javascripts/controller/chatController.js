@@ -44,8 +44,6 @@ app.controller('chatController', ['$scope', 'userFactory', 'chatFactory', 'env',
             roomId : $scope.roomId
         })
         $scope.message = "";
-
-        console.log($scope.user);
     };
 
     $scope.switchRoom = room => {
@@ -55,6 +53,7 @@ app.controller('chatController', ['$scope', 'userFactory', 'chatFactory', 'env',
 
         chatFactory.getMessages(room.id).then(data => {
             $scope.messages[room.id] = data;
+            console.log($scope.messages);
         });
     };
 
