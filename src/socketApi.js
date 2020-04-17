@@ -17,7 +17,7 @@ io.use(socketAuthorization);
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
 const redis = require('redis');
-const url = "redis://redistogo:1bd4db556cca817279bc9cf138fe2f9a@tarpon.redistogo.com:11708/";
+const url = process.env.REDIS_URL;
 const rtg   = require("url").parse(url);
 
 const pub = redis.createClient(rtg.port, rtg.hostname, {return_buffers: true});
