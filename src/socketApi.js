@@ -18,7 +18,8 @@ io.use(socketAuthorization);
 const redisAdapter = require('socket.io-redis');
 io.adapter(redisAdapter({
     host: 'localhost',
-    port: 1234
+    port: 1234,
+    auth_pass: 'x8n9ombgHqNQZAvcG0L9lvBpWiQw42nn'
 }));
 
 io.on('connection', socket => {
