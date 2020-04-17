@@ -16,14 +16,9 @@ io.use(socketAuthorization);
 
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
-const redis = require('redis');
-
-const pubClient = redis.createClient(process.env.REDIS_URL);
-const subClient = redis.createClient(process.env.REDIS_URL);
-
 io.adapter(redisAdapter({
-    pubClient,
-    subClient 
+    host: 'ec2-52-1-83-234.compute-1.amazonaws.com',
+    port: 19209
 }));
 
 io.on('connection', socket => {
