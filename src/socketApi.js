@@ -16,6 +16,7 @@ io.use(socketAuthorization);
 
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
+const redis = require('redis');
 const url = "redis://h:p9c9e4fcb9a8c520125233b7635b18dd57d1ce66cbd1fc53885e400525627aaed@ec2-52-1-83-234.compute-1.amazonaws.com:19209/";
 const rtg   = require("url").parse(url);
 
