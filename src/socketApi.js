@@ -1,4 +1,5 @@
 const socketio = require('socket.io');
+const redis = require('redis');
 const socketAuthorization = require('../middleware/socketAuthorization');
 const io = socketio();
 
