@@ -13,7 +13,7 @@ const Messages = require('./lib/Messages');
 
 // Socket Authorization
 io.use(socketAuthorization);
-
+/*
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
 io.adapter(redisAdapter({
@@ -21,7 +21,7 @@ io.adapter(redisAdapter({
     port: 1234,
     auth_pass: 'x8n9ombgHqNQZAvcG0L9lvBpWiQw42nn'
 }));
-
+*/
 io.on('connection', socket => {
     console.log('A user logged in with name ' + socket.request.user.firstName);
 
