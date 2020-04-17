@@ -16,7 +16,11 @@ io.use(socketAuthorization);
 
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
-io.adapter(process.env.REDISCLOUD_URL);
+io.adapter(redisAdapter({
+    host: 'redis-15572.c12.us-east-1-4.ec2.cloud.redislabs.com',
+    port: 15572,
+    auth_pass: 'x8n9ombgHqNQZAvcG0L9lvBpWiQw42nn'
+}));
 
 io.on('connection', socket => {
     console.log('A user logged in with name ' + socket.request.user.firstName);
