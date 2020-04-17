@@ -16,10 +16,22 @@ io.use(socketAuthorization);
 
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
-io.adapter(redisAdapter({
-    host: 'ec2-52-1-83-234.compute-1.amazonaws.com',
-    port: 19209
-}));
+const url = "redis://h:p9c9e4fcb9a8c520125233b7635b18dd57d1ce66cbd1fc53885e400525627aaed@ec2-52-1-83-234.compute-1.amazonaws.com:19209/";
+const rtg   = require("url").parse(url);
+
+const pub = redis.createClient(rtg.port, rtg.hostname, {return_buffers: true});
+const sub = redis.createClient(rtg.port, rtg.hostname, {return_buffers: true});
+pub.auth(rtg.auth.split(":")[1]);
+sub.auth(rtg.auth.split(":")[1]);
+
+const redisOptions = {
+    pubClient: pub,
+    subClient: sub,
+    host: rtg.hostname,
+    port: rtg.port
+  };
+
+io.adapter(redisAdapter(redisOptions));
 
 io.on('connection', socket => {
     console.log('A user logged in with name ' + socket.request.user.firstName);
