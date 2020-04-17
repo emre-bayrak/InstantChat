@@ -1,5 +1,4 @@
 const socketio = require('socket.io');
-const redis = require('redis');
 const socketAuthorization = require('../middleware/socketAuthorization');
 const io = socketio();
 
@@ -17,9 +16,7 @@ io.use(socketAuthorization);
 
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
-const pub = redis.createClient(15572, 'redis-15572.c12.us-east-1-4.ec2.cloud.redislabs.com', { auth_pass: "x8n9ombgHqNQZAvcG0L9lvBpWiQw42nn" });
-const sub = redis.createClient(15572, 'redis-15572.c12.us-east-1-4.ec2.cloud.redislabs.com', { auth_pass: "x8n9ombgHqNQZAvcG0L9lvBpWiQw42nn" });
-io.adapter(redisAdapter({ pubClient: pub, subClient: sub }));
+io.adapter(process.env.REDISCLOUD_URL);
 
 io.on('connection', socket => {
     console.log('A user logged in with name ' + socket.request.user.firstName);
