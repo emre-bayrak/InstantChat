@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 // express-session
 app.use(session({
   store: redisStore,
-  secret: 'g|JVQ\'V{FyAuzse',
+  secret: process.env.SESSION_SECRET_KEY,
   resave: false,
   saveUninitialized: true,
   cookie: { maxAge: 14 * 24 * 3600000 }
