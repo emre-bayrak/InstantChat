@@ -13,11 +13,11 @@ const Messages = require('./lib/Messages');
 
 // Socket Authorization
 io.use(socketAuthorization);
-/*
+
 // Redis Adapter
 const redisAdapter = require('socket.io-redis');
 const redis = require('redis');
-const url = "redis://h:p9c9e4fcb9a8c520125233b7635b18dd57d1ce66cbd1fc53885e400525627aaed@ec2-52-1-83-234.compute-1.amazonaws.com:19209/";
+const url = "redis://redistogo:1bd4db556cca817279bc9cf138fe2f9a@tarpon.redistogo.com:11708/";
 const rtg   = require("url").parse(url);
 
 const pub = redis.createClient(rtg.port, rtg.hostname, {return_buffers: true});
@@ -33,7 +33,7 @@ const redisOptions = {
   };
 
 io.adapter(redisAdapter(redisOptions));
-*/
+
 io.on('connection', socket => {
     console.log('A user logged in with name ' + socket.request.user.firstName);
 
