@@ -72,24 +72,40 @@ body .modal .modal__inner .modal__footer {
   background: #fff;
 }
 body .modal .modal__inner .modal__footer a {
-  display: inline-block;
+  display: list-item;
   padding: 12px 20px;
   color: #ffffff;
   font-size: 14px;
   line-height: 1;
   text-decoration: none;
   text-align: center;
-  background: #e04932;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+  width: 210px;
+  margin: auto;
+  margin-bottom: 10px;
+  list-style-type: none;
 }
-body .modal .modal__inner .modal__footer a .fa {
-  margin: 0 10px 0 0;
+body .modal .modal__inner .modal__footer a .fab {
+  margin: 0 5px 0 0;
 }
-body .modal .modal__inner .modal__footer a:hover {
+body .modal .modal__inner .modal__footer .google{
+  background: #e04932;
+}
+
+body .modal .modal__inner .modal__footer .google:hover {
   background: #f24a32;
 }
+
+body .modal .modal__inner .modal__footer .github{
+  background: #000000;
+}
+
+body .modal .modal__inner .modal__footer .github:hover {
+  background: #302d2d;
+}
+
 body .modal .modal__inner .modal__footer a.disabled {
   background: #EFEFEF;
 }

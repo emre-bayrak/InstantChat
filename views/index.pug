@@ -12,9 +12,18 @@ block content
         .modal__header
           h2 Welcome, please login.
         .modal__footer
-          a(href='/auth/google')
-            i.fab.fa-google-plus-g(aria-hidden='true') &nbsp;
+          a(
+            href  = '/auth/google',
+            class = 'google'
+            )
+            i.fab.fa-google-plus-g(aria-hidden='true')
             | Login with Google+
+          a(
+            href = '/auth/github',
+            class = 'github' 
+            )
+            i.fab.fa-github(aria-hidden='true')
+            | Login with GitHub
 
 append javascripts
     script(src="/javascripts/controller/indexController.js")

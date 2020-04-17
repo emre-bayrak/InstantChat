@@ -7,6 +7,10 @@ const userSchema = new Schema({
         type: String,
         unique: true
     },
+    githubId: {
+        type: String,
+        unique: true
+    },
     firstName: String,
     lastName: String,
     profilePhotoUrl: String 
